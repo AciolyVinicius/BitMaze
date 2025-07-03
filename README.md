@@ -49,7 +49,7 @@ O jogador controla um personagem (player) que navega por diversos mapas intercon
 ## 🚀 Como Executar
 
 1. Monte o hardware conforme as conexões indicadas acima.
-2. Copie o arquivo `ProjetoFinal_comentado.py` para seu microcontrolador.
+2. Copie o arquivo `ProjetoFinal_BitMaze.py` para seu microcontrolador.
 3. Acesse o terminal REPL do MicroPython.
 4. Execute o script para iniciar o jogo.
 5. Pressione o botão **A** para iniciar.
@@ -71,7 +71,7 @@ O jogador controla um personagem (player) que navega por diversos mapas intercon
 
 ## 👤 Autoria
 
-Desenvolvido por Igor Origuela da Graça e Vinícius Acioly Elias da Silva para trabalho acadêmico no curso de Engenharia Elétrica da Unicamp.
+Desenvolvido por Igor Origuela da Graça e Vinícius Acioly Elias da Silva para trabalho acadêmico no curso de Engenharia Elétrica da Unicamp - EA801.
 
 ---
 
