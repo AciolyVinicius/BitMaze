@@ -28,6 +28,7 @@ O jogador controla um personagem (player) que navega por diversos mapas intercon
 - Gerenciamento da jogabilidade: vidas, itens e condições de vitória/derrota.
 - Animações assíncronas usando `uasyncio` para maior fluidez.
 - Envio de comandos para display Nextion via UART.
+- Sincronismo entre BitDogLab e Nextion.
 - Funções auxiliares para geração e manipulação dos mapas e LEDs.
 
 ---
