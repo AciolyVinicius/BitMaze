@@ -1,55 +1,93 @@
 # 🎮 BitMaze — Jogo Interativo com BitDogLab
 
-BitMaze é um jogo interativo desenvolvido como projeto final da disciplina **EA801 – Sistemas Embarcados** da UNICAMP. O jogo utiliza o microcontrolador **BitDogLab**, integrando uma matriz de LEDs, joystick, botões, LED RGB, display OLED e display Nextion, formando um sistema completo de jogabilidade em tempo real com múltiplos mapas, radares, obstáculos e minijogos.
+## 📝 Descrição
 
-## 🧠 Equipe
+BitMaze é um jogo eletrônico desenvolvido em MicroPython para microcontroladores, que utiliza uma **matriz de LEDs NeoPixel 5x5**, joystick analógico, botões físicos e um display OLED para criar uma experiência interativa e dinâmica.
 
-- **Igor Origuela da Graça** — RA 199002  
-- **Vinícius Acioly Elias da Silva** — RA 245220
+O jogador controla um personagem (player) que navega por diversos mapas interconectados, evitando obstáculos, coletando itens como radar e vidas extras, e precisa alcançar a posição final para vencer o desafio.
 
-## 🕹️ Funcionalidades
+---
 
-- Controle do personagem via **joystick analógico**
-- **Labirinto gerado aleatoriamente**, com garantia de caminho até o destino
-- Transições entre **4 blocos/matrizes** com mapa interconectado
-- Sistema de **radar** que mostra perigos, vidas e radares próximos
-- **Obstáculos** que reduzem vida ao serem tocados
-- Coleta de **vidas extras** por meio de um **minigame de precisão**
-- Display OLED para status do jogo
-- Display Nextion com:
-  - Animações do personagem (andar, dano, vitória, derrota)
-  - Mapa atual, número de vidas e radares disponíveis
-  - **Barra de progresso** indicando proximidade do ponto final
-- LED RGB para indicar o resultado da partida:  
-  - 🟢 **Verde**: vitória  
-  - 🔴 **Vermelho**: derrota
+## ⚙️ Funcionalidades Principais
+
+- 🎯 Controle preciso do player via joystick analógico.
+- 🗺️ Navegação por múltiplos mapas interconectados.
+- 💥 Obstáculos aleatórios que podem causar perda de vidas.
+- 📡 Itens de radar que revelam áreas próximas no mapa.
+- ❤️ Itens de vida extra e mini-jogos para ganhar mais vidas.
+- 🔴 Indicadores visuais com LED RGB e display OLED.
+- 🎨 Animações fluídas para movimento, dano, radar e vitória.
+- 🔌 Comunicação UART para controle do display Nextion.
+
+---
+
+## 🛠️ Estrutura do Projeto
+
+- Configuração e inicialização do hardware (GPIO, ADC, PWM, UART, I2C).
+- Implementação da lógica dos mapas, movimentação e colisões.
+- Gerenciamento da jogabilidade: vidas, itens e condições de vitória/derrota.
+- Animações assíncronas usando `uasyncio` para maior fluidez.
+- Envio de comandos para display Nextion via UART.
+- Funções auxiliares para geração e manipulação dos mapas e LEDs.
+
+---
+
+## 🔧 Requisitos de Hardware
+
+| Componente                    | Descrição                         | Conexão                    |
+|------------------------------|---------------------------------|----------------------------|
+| Microcontrolador              | Suporte a MicroPython            | Exemplo: Raspberry Pi Pico  |
+| Matriz NeoPixel 5x5           | LEDs RGB controláveis            | Pino 7                      |
+| Joystick analógico           | Controle de direção              | ADC pinos 26 (X), 27 (Y)   |
+| Botões físicos               | Entrada de comandos (A e B)      | Pinos 5 e 6 (pull-up)      |
+| LED RGB                      | Indicador visual                 | PWM nos pinos 11 (G), 12 (R), 13 (B) |
+| Display OLED SSD1306         | Exibição de status               | I2C (pinos 14 - SDA, 15 - SCL) |
+| UART para Display Nextion    | Comunicação serial               | Pinos 16 (TX), 17 (RX)     |
+
+---
+
+## 🚀 Como Executar
+
+1. Monte o hardware conforme as conexões indicadas acima.
+2. Copie o arquivo `ProjetoFinal_comentado.py` para seu microcontrolador.
+3. Acesse o terminal REPL do MicroPython.
+4. Execute o script para iniciar o jogo.
+5. Pressione o botão **A** para iniciar.
+6. Use o joystick para movimentar o player pelo mapa.
+7. Pressione o botão **B** para ativar o radar quando disponível.
+8. Evite obstáculos, colete itens e alcance a meta para vencer.
+
+---
+
+## 💡 Possíveis Melhorias Futuras
+
+- Calibração avançada do joystick e sensores.
+- Expansão dos mini-jogos para maior variedade.
+- Inclusão de som e feedback tátil (vibração).
+- Mais mapas e níveis de dificuldade progressiva.
+- Melhorias na interface do display Nextion.
+
+---
+
+## 👤 Autoria
+
+Desenvolvido por Igor Origuela da Graça e Vinícius Acioly Elias da Silva para trabalho acadêmico no curso de Engenharia Elétrica da Unicamp.
+
+---
 
 ## 📷 Fotos do Projeto
 
 ### Protótipo Montado
-![Protótipo Montado](link-da-imagem-1)
+![image](https://github.com/user-attachments/assets/e82e4cfa-05a3-4e90-a87f-07cf523ee123)
 
-### Jogo em Execução
-![Jogo rodando](link-da-imagem-2)
+### Jogo no Display Nextion
+![image](https://github.com/user-attachments/assets/ebd44c9e-1343-423f-bf6d-69ba3f40bd1d)
 
-### Radar Ativado
-![Radar ativo](link-da-imagem-3)
 
-### Minigame de Vida Extra
-![Minigame](link-da-imagem-4)
+### Controle BitDogLab
+![image](https://github.com/user-attachments/assets/24a5f90d-821a-43cd-b7bc-8fc06602c2c0)
 
-> Substitua os `link-da-imagem` pelos links reais das suas imagens no GitHub ou em um serviço de hospedagem de imagens.
 
-## 🧩 Componentes Utilizados
 
-- Microcontrolador **BitDogLab**
-- Matriz de LEDs 5x5
-- Joystick analógico
-- 2 botões (Radar / Minigame)
-- LED RGB
-- Display OLED via I2C
-- Display **Nextion** (serial)
-- Bibliotecas MicroPython compatíveis
-
-## 📁 Organização do Repositório
+✨ Obrigado por conferir o BitMaze! Divirta-se jogando e explorando o código! ✨
 
